@@ -8,7 +8,7 @@ public class UnitSystem : MonoBehaviour, IMoveable {
     [Header("Checks")]
     public Check GroundCheck;
 
-    private void FixedUpdate() {
+    protected void FixedUpdate() {
         if (RB.velocity.y < 0.01f && GroundCheck.EvaluateCheck()) {
             RB.velocity = new Vector2(0f, RB.velocity.y);
             if (UnitJump.Request)
