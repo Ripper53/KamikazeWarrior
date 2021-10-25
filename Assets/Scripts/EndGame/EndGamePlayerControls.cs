@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 public class EndGamePlayerControls : PlayerControls {
     public EndGamePlayer EndGamePlayer;
 
-    private void Start() {
+    protected override void AddEvents() {
         input.Movement.Vertical.performed += Vertical_performed;
         input.Movement.Vertical.canceled += Vertical_canceled;
     }
 
-    private void OnDestroy() {
+    protected override void RemoveEvents() {
         input.Movement.Vertical.performed -= Vertical_performed;
         input.Movement.Vertical.canceled -= Vertical_canceled;
     }

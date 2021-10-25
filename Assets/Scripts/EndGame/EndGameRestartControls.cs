@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 public class EndGameRestartControls : PlayerControls {
     public EndGameRestart EndGameRestart;
 
-    private void Start() {
+    protected override void AddEvents() {
         input.Movement.Horizontal.performed += EndGame_Event;
         input.Movement.Vertical.performed += EndGame_Event;
     }
 
-    private void OnDestroy() {
+    protected override void RemoveEvents() {
         input.Movement.Horizontal.performed -= EndGame_Event;
         input.Movement.Vertical.performed -= EndGame_Event;
     }
@@ -18,4 +18,5 @@ public class EndGameRestartControls : PlayerControls {
         if (EndGameRestart.Timer <= 0f)
             SceneManager.LoadSceneAsync(0);
     }
+
 }

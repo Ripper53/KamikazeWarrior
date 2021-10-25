@@ -3,13 +3,13 @@
 public class UnitMovementPlayerControls : PlayerControls {
     public UnitMovement UnitMovement;
 
-    private void Start() {
+    protected override void AddEvents() {
         input.Movement.Horizontal.performed += Horizontal_performed;
 
         input.Movement.Horizontal.canceled += Horizontal_canceled;
     }
 
-    private void OnDestroy() {
+    protected override void RemoveEvents() {
         input.Movement.Horizontal.performed -= Horizontal_performed;
 
         input.Movement.Horizontal.canceled -= Horizontal_canceled;

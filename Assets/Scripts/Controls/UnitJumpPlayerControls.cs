@@ -3,16 +3,16 @@
 public class UnitJumpPlayerControls : PlayerControls {
     public UnitJump UnitJump;
 
-    private void Start() {
+    protected override void AddEvents() {
         input.Movement.Vertical.performed += Vertical_performed;
 
         input.Movement.Vertical.canceled += Vertical_canceled;
     }
 
-    private void OnDestroy() {
+    protected override void RemoveEvents() {
         input.Movement.Vertical.performed -= Vertical_performed;
 
-        input.Movement.Vertical.canceled += Vertical_canceled;
+        input.Movement.Vertical.canceled -= Vertical_canceled;
     }
 
     #region Events

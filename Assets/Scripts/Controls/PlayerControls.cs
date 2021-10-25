@@ -3,13 +3,25 @@
 public abstract class PlayerControls : MonoBehaviour {
     protected PlayerInput input;
 
-    private void Awake() {
+    protected void Awake() {
         input = new PlayerInput();
     }
-    private void OnEnable() {
+    protected void Start() {
+        AddEvents();
+    }
+    protected void OnEnable() {
         input.Enable();
     }
-    private void OnDisable() {
+    protected void OnDisable() {
         input.Disable();
     }
+
+    protected void OnDestroy() {
+        RemoveEvents();
+        input.Dispose();
+    }
+
+    protected abstract void AddEvents();
+    protected abstract void RemoveEvents();
+
 }

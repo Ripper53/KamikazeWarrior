@@ -1,18 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenuControls : PlayerControls {
     public MainMenu MainMenu;
 
-    private void Start() {
+    protected override void AddEvents() {
 #if !UNITY_WEBGL
         input.Movement.Vertical.performed += Vertical_performed;
 #endif
         input.Movement.Horizontal.performed += Horizontal_performed;
     }
 
-    private void OnDestroy() {
+    protected override void RemoveEvents() {
 #if !UNITY_WEBGL
         input.Movement.Vertical.performed -= Vertical_performed;
 #endif
